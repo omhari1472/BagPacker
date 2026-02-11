@@ -1,0 +1,31 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>Welcome to BagPackers</h1>
+    <p>Find secure luggage storage in your city</p>
+  </div>
+
+  <div class="city-selector-section">
+    <app-city-selector 
+      [selectedCity]="selectedCity()"
+      (citySelected)="onCitySelected($event)"
+    ></app-city-selector>
+  </div>
+
+  <div class="city-image-section">
+    <img 
+      [src]="cityImage()" 
+      [alt]="selectedCity() + ' city view'"
+      class="city-image"
+    />
+    <div class="city-overlay">
+      <h2>{{ selectedCity() }}</h2>
+    </div>
+  </div>
+
+  <div class="booking-section">
+    <app-booking-form 
+      [selectedCity]="selectedCity()"
+      (bookingCreated)="onBookingCreated($event)"
+    ></app-booking-form>
+  </div>
+</div>

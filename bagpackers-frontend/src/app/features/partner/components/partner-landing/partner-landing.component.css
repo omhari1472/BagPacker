@@ -1,0 +1,381 @@
+.partner-landing {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Hero Section with Carousel */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: clamp(400px, 60vw, 600px);
+  overflow: hidden;
+  background: #000;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.carousel-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+  width: 100%;
+}
+
+.carousel-title {
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
+}
+
+.carousel-description {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Carousel Controls */
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: none;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 2.5vw, 1.5rem);
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  min-width: 44px; /* Touch-friendly */
+  min-height: 44px;
+}
+
+.carousel-control:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.carousel-control:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-control.prev {
+  left: clamp(10px, 2vw, 20px);
+}
+
+.carousel-control.next {
+  right: clamp(10px, 2vw, 20px);
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+  position: absolute;
+  bottom: clamp(20px, 4vw, 30px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: clamp(8px, 1.5vw, 10px);
+  z-index: 3;
+}
+
+.indicator {
+  width: clamp(10px, 2vw, 12px);
+  height: clamp(10px, 2vw, 12px);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 32px; /* Touch-friendly */
+  min-height: 32px;
+  padding: 0;
+}
+
+.indicator.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem);
+  text-align: center;
+  color: white;
+}
+
+.cta-content h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.cta-content p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.6;
+}
+
+.cta-button {
+  background: white;
+  color: #667eea;
+  border: none;
+  padding: clamp(0.875rem, 2vw, 1rem) clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px; /* Touch-friendly */
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+/* Benefits Section */
+.benefits-section {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem);
+  background: #f8f9fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  color: #333;
+  font-weight: 700;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.benefit-card {
+  background: white;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border-radius: clamp(8px, 2vw, 10px);
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.benefit-icon {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.benefit-title {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  margin-bottom: 1rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.benefit-description {
+  color: #666;
+  line-height: 1.6;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+}
+
+/* How It Works Section */
+.how-it-works-section {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem);
+  background: white;
+}
+
+.steps-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: clamp(2rem, 4vw, 3rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.step {
+  text-align: center;
+}
+
+.step-number {
+  width: clamp(60px, 10vw, 80px);
+  height: clamp(60px, 10vw, 80px);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: bold;
+  margin: 0 auto clamp(1rem, 2vw, 1.5rem);
+}
+
+.step-title {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  margin-bottom: 1rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.step-description {
+  color: #666;
+  line-height: 1.6;
+  font-size: clamp(0.875rem, 1.5vw, 1.1rem);
+}
+
+/* Final CTA Section */
+.final-cta-section {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  text-align: center;
+  color: white;
+}
+
+.final-cta-section h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.final-cta-section p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.6;
+}
+
+.cta-button-secondary {
+  background: white;
+  color: #667eea;
+  border: none;
+  padding: clamp(0.875rem, 2vw, 1rem) clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px; /* Touch-friendly */
+}
+
+.cta-button-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button-secondary:active {
+  transform: translateY(0);
+}
+
+/* Tablet optimizations */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .steps-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 767px) {
+  .hero-section {
+    height: 400px;
+  }
+  
+  .carousel-control {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .carousel-control.prev {
+    left: 5px;
+  }
+  
+  .carousel-control.next {
+    right: 5px;
+  }
+  
+  .benefits-grid,
+  .steps-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .hero-section {
+    height: 350px;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 767px) and (orientation: landscape) {
+  .hero-section {
+    height: 300px;
+  }
+  
+  .carousel-title {
+    font-size: 1.5rem;
+  }
+  
+  .carousel-description {
+    font-size: 0.9rem;
+  }
+}

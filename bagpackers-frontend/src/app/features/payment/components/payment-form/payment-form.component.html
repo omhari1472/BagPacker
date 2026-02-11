@@ -1,0 +1,115 @@
+<div class="payment-container">
+  <div class="payment-card">
+    <h2 class="payment-title">Complete Your Payment</h2>
+
+    <!-- Booking Summary -->
+    <div class="booking-summary">
+      <h3>Booking Details</h3>
+      <div class="summary-item">
+        <span class="label">Location:</span>
+        <span class="value">{{ region }}, {{ city }}</span>
+      </div>
+      <div class="summary-item">
+        <span class="label">Number of Bags:</span>
+        <span class="value">{{ numberOfBags }}</span>
+      </div>
+      <div class="summary-item total">
+        <span class="label">Total Cost:</span>
+        <span class="value">₹{{ totalCost }}</span>
+      </div>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage()" class="error-message">
+      {{ errorMessage() }}
+    </div>
+
+    <!-- Payment Form -->
+    <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="payment-form">
+      <h3>Your Details</h3>
+
+      <div class="form-group">
+        <label for="fullName">Full Name *</label>
+        <input
+          type="text"
+          id="fullName"
+          formControlName="fullName"
+          placeholder="Enter your full name"
+          [class.invalid]="fullName?.invalid && fullName?.touched"
+        />
+        <div *ngIf="fullName?.invalid && fullName?.touched" class="error">
+          <span *ngIf="fullName?.errors?.['required']">Full name is required</span>
+          <span *ngIf="fullName?.errors?.['minlength']">Full name must be at least 2 characters</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          [class.invalid]="email?.invalid && email?.touched"
+        />
+        <div *ngIf="email?.invalid && email?.touched" class="error">
+          <span *ngIf="email?.errors?.['required']">Email is required</span>
+          <span *ngIf="email?.errors?.['email']">Please enter a valid email</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="mobile">Mobile Number *</label>
+        <input
+          type="tel"
+          id="mobile"
+          formControlName="mobile"
+          placeholder="Enter 10-digit mobile number"
+          [class.invalid]="mobile?.invalid && mobile?.touched"
+        />
+        <div *ngIf="mobile?.invalid && mobile?.touched" class="error">
+          <span *ngIf="mobile?.errors?.['required']">Mobile number is required</span>
+          <span *ngIf="mobile?.errors?.['pattern']">Please enter a valid 10-digit mobile number</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address *</label>
+        <textarea
+          id="address"
+          formControlName="address"
+          placeholder="Enter your address"
+          rows="3"
+          [class.invalid]="address?.invalid && address?.touched"
+        ></textarea>
+        <div *ngIf="address?.invalid && address?.touched" class="error">
+          <span *ngIf="address?.errors?.['required']">Address is required</span>
+          <span *ngIf="address?.errors?.['minlength']">Address must be at least 10 characters</span>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="goBack()"
+          [disabled]="isProcessing()"
+        >
+          Back
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="isProcessing()"
+        >
+          {{ isProcessing() ? 'Processing...' : 'Proceed to Payment' }}
+        </button>
+      </div>
+    </form>
+
+    <div class="payment-info">
+      <p>🔒 Your payment is secure and encrypted</p>
+      <p>Powered by Razorpay</p>
+    </div>
+  </div>
+</div>

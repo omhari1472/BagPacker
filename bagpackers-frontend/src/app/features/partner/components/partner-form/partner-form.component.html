@@ -1,0 +1,96 @@
+<div class="partner-form-container">
+  <div class="form-wrapper">
+    <div class="form-header">
+      <h1>Partner Registration</h1>
+      <p>Join our network of trusted luggage storage partners</p>
+    </div>
+
+    <div class="form-info">
+      <p>
+        <strong>Note:</strong> After submitting this form, our team will verify your location and contact you within 24-48 hours to complete the registration process.
+      </p>
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-error">
+      {{ errorMessage }}
+    </div>
+
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+
+    <form [formGroup]="partnerForm" (ngSubmit)="onSubmit()" class="partner-form">
+      <!-- Full Name -->
+      <div class="form-group" [class.error]="fullName?.invalid && fullName?.touched">
+        <label for="fullName">Full Name *</label>
+        <input
+          type="text"
+          id="fullName"
+          formControlName="fullName"
+          placeholder="Enter your full name"
+        />
+        <div *ngIf="fullName?.invalid && fullName?.touched" class="error-message">
+          <span *ngIf="fullName?.errors?.['required']">Full name is required</span>
+          <span *ngIf="fullName?.errors?.['minlength']">Full name must be at least 3 characters</span>
+        </div>
+      </div>
+
+      <!-- Region/City -->
+      <div class="form-group" [class.error]="region?.invalid && region?.touched">
+        <label for="region">City/Region *</label>
+        <select
+          id="region"
+          formControlName="region"
+        >
+          <option value="">Select a city</option>
+          <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+        </select>
+        <div *ngIf="region?.invalid && region?.touched" class="error-message">
+          <span *ngIf="region?.errors?.['required']">Please select a city</span>
+        </div>
+      </div>
+
+      <!-- Mobile Number -->
+      <div class="form-group" [class.error]="mobileNumber?.invalid && mobileNumber?.touched">
+        <label for="mobileNumber">Mobile Number *</label>
+        <input
+          type="tel"
+          id="mobileNumber"
+          formControlName="mobileNumber"
+          placeholder="Enter 10-digit mobile number"
+          maxlength="10"
+        />
+        <div *ngIf="mobileNumber?.invalid && mobileNumber?.touched" class="error-message">
+          <span *ngIf="mobileNumber?.errors?.['required']">Mobile number is required</span>
+          <span *ngIf="mobileNumber?.errors?.['pattern']">Please enter a valid 10-digit Indian mobile number</span>
+        </div>
+      </div>
+
+      <!-- Address -->
+      <div class="form-group" [class.error]="address?.invalid && address?.touched">
+        <label for="address">Complete Address *</label>
+        <textarea
+          id="address"
+          formControlName="address"
+          placeholder="Enter your complete address including street, area, and pincode"
+          rows="4"
+        ></textarea>
+        <div *ngIf="address?.invalid && address?.touched" class="error-message">
+          <span *ngIf="address?.errors?.['required']">Address is required</span>
+          <span *ngIf="address?.errors?.['minlength']">Address must be at least 10 characters</span>
+        </div>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="goBack()" [disabled]="isLoading">
+          Back
+        </button>
+        <button type="submit" class="btn btn-primary" [disabled]="isLoading || partnerForm.invalid">
+          <span *ngIf="isLoading" class="loading-spinner"></span>
+          {{ isLoading ? 'Submitting...' : 'Submit Registration' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- Logo and Brand -->
+    <div class="navbar-brand">
+      <a routerLink="/dashboard" class="brand-link">
+        <img src="/assets/images/backpacker.png" alt="BagPackers Logo" class="logo" />
+        <span class="brand-name">BagPackers</span>
+      </a>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="navbar-links">
+      <a routerLink="/dashboard" class="nav-link" routerLinkActive="active">Services</a>
+      <a routerLink="/about" class="nav-link" routerLinkActive="active">About us</a>
+    </div>
+
+    <!-- City Dropdown -->
+    <div class="navbar-city">
+      <app-city-selector 
+        [selectedCity]="selectedCity"
+        (citySelected)="onCitySelected($event)"
+      ></app-city-selector>
+    </div>
+
+    <!-- Become a Partner Button -->
+    <div class="navbar-partner">
+      <button class="partner-btn" (click)="navigateToPartner()">
+        Become a Partner
+      </button>
+    </div>
+
+    <!-- User Info (when authenticated) -->
+    <div class="navbar-user" *ngIf="isAuthenticated">
+      <div class="user-info" *ngIf="currentUser$ | async as user">
+        <span class="user-name">{{ getUserDisplayName(user) }}</span>
+        <button class="logout-btn" (click)="logout()">Logout</button>
+      </div>
+    </div>
+
+    <!-- Login/Signup (when not authenticated) -->
+    <div class="navbar-auth" *ngIf="!isAuthenticated">
+      <a routerLink="/login" class="auth-link">Login</a>
+      <a routerLink="/signup" class="auth-link signup">Sign Up</a>
+    </div>
+  </div>
+</nav>

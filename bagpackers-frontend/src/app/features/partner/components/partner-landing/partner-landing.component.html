@@ -1,0 +1,98 @@
+<div class="partner-landing">
+  <!-- Hero Section with Carousel -->
+  <section class="hero-section">
+    <div class="carousel-container">
+      <div class="carousel-slides">
+        <div 
+          *ngFor="let slide of carouselSlides; let i = index" 
+          class="carousel-slide"
+          [class.active]="i === currentSlideIndex">
+          <img [src]="slide.image" [alt]="slide.title" class="carousel-image">
+          <div class="carousel-content">
+            <h1 class="carousel-title">{{ slide.title }}</h1>
+            <p class="carousel-description">{{ slide.description }}</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Carousel Controls -->
+      <button class="carousel-control prev" (click)="previousSlide()" aria-label="Previous slide">
+        &#10094;
+      </button>
+      <button class="carousel-control next" (click)="nextSlide()" aria-label="Next slide">
+        &#10095;
+      </button>
+      
+      <!-- Carousel Indicators -->
+      <div class="carousel-indicators">
+        <button 
+          *ngFor="let slide of carouselSlides; let i = index"
+          class="indicator"
+          [class.active]="i === currentSlideIndex"
+          (click)="goToSlide(i)"
+          [attr.aria-label]="'Go to slide ' + (i + 1)">
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Become a BagPackers Partner Today</h2>
+      <p>Join thousands of partners earning extra income by providing secure luggage storage</p>
+      <button class="cta-button" (click)="navigateToRegistration()">
+        Register as Partner
+      </button>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits-section">
+    <div class="container">
+      <h2 class="section-title">Why Partner With Us?</h2>
+      <div class="benefits-grid">
+        <div *ngFor="let benefit of benefits" class="benefit-card">
+          <div class="benefit-icon">{{ benefit.icon }}</div>
+          <h3 class="benefit-title">{{ benefit.title }}</h3>
+          <p class="benefit-description">{{ benefit.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works-section">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <div class="steps-container">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3 class="step-title">Register</h3>
+          <p class="step-description">Fill out our simple registration form with your details and location.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3 class="step-title">Get Verified</h3>
+          <p class="step-description">Our team will verify your location and contact you within 24-48 hours.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3 class="step-title">Start Earning</h3>
+          <p class="step-description">Accept bookings and start earning money by storing travelers' luggage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta-section">
+    <div class="container">
+      <h2>Ready to Get Started?</h2>
+      <p>Register now and start earning with BagPackers</p>
+      <button class="cta-button-secondary" (click)="navigateToRegistration()">
+        Join Now
+      </button>
+    </div>
+  </section>
+</div>

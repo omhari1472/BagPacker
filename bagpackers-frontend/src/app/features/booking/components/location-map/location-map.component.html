@@ -1,0 +1,78 @@
+<div class="location-map-container">
+  <div class="booking-summary">
+    <h2>Storage Locations</h2>
+    
+    @if (booking()) {
+      <div class="summary-card">
+        <div class="summary-item">
+          <span class="label">Location:</span>
+          <span class="value">{{ region }}, {{ city }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Number of Bags:</span>
+          <span class="value">{{ numberOfBags }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Total Cost:</span>
+          <span class="value cost">₹{{ totalCost }}</span>
+        </div>
+      </div>
+    }
+  </div>
+
+  @if (errorMessage()) {
+    <div class="error-alert">
+      {{ errorMessage() }}
+    </div>
+  }
+
+  <div class="map-section">
+    <h3>Available Storage Partners</h3>
+    
+    @if (isLoading()) {
+      <div class="loading">
+        <p>Loading locations...</p>
+      </div>
+    } @else if (locations().length === 0) {
+      <div class="no-locations">
+        <p>No storage locations available in this area yet.</p>
+        <p>We're working on expanding our network. Please check back soon!</p>
+      </div>
+    } @else {
+      <div class="locations-list">
+        @for (location of locations(); track location.id) {
+          <div class="location-card">
+            <div class="location-info">
+              <h4>{{ location.region }}</h4>
+              <p>Available spaces: {{ location.availableSpaces }}</p>
+              <p>Price: ₹{{ location.pricePerBag }} per bag</p>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    @if (mapUrl) {
+      <div class="map-container">
+        <iframe
+          [src]="mapUrl"
+          width="100%"
+          height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    }
+  </div>
+
+  <div class="action-buttons">
+    <button class="btn-secondary" (click)="goToDashboard()">
+      Back to Dashboard
+    </button>
+    <button class="btn-primary" (click)="goToPayment()">
+      Proceed to Payment
+    </button>
+  </div>
+</div>

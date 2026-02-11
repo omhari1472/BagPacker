@@ -1,0 +1,41 @@
+{
+	"name": "bagpackers-backend",
+	"version": "1.0.0",
+	"private": true,
+	"description": "BagPackers luggage storage backend API built with Cloudflare Workers",
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"dev": "wrangler dev",
+		"start": "wrangler dev",
+		"build": "tsc",
+		"cf-typegen": "wrangler types",
+		"migrate": "drizzle-kit generate",
+		"migrate:push": "drizzle-kit push",
+		"lint": "npx @biomejs/biome check",
+		"format": "npx @biomejs/biome format --write",
+		"lint:fix": "npx @biomejs/biome lint --write"
+	},
+	"dependencies": {
+		"@types/bcrypt": "^5.0.2",
+		"@types/jsonwebtoken": "^9.0.7",
+		"bcrypt": "^5.1.1",
+		"chanfana": "2.0.2",
+		"date-fns": "4.1.0",
+		"drizzle-orm": "0.44.2",
+		"hono": "^4.10.4",
+		"itty-router": "5.0.18",
+		"jsonwebtoken": "^9.0.2",
+		"mysql2": "^3.11.5",
+		"reflect-metadata": "0.2.2",
+		"tsyringe": "4.8.0",
+		"zod": "3.23.8"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.8.3",
+		"@cloudflare/workers-types": "4.20250214.0",
+		"@types/node": "22.5.1",
+		"drizzle-kit": "0.31.0",
+		"typescript": "5.0.4",
+		"wrangler": "3.109.2"
+	}
+}

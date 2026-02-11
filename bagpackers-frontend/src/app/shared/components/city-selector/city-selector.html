@@ -1,0 +1,13 @@
+<div class="city-selector">
+  <label for="city-dropdown" class="city-label">Select City:</label>
+  <select 
+    id="city-dropdown"
+    class="city-dropdown" 
+    [(ngModel)]="selectedCity" 
+    (change)="onCityChange($event)"
+    aria-label="Select city">
+    <option *ngFor="let city of cities" [value]="city.name">
+      {{ city.name }}
+    </option>
+  </select>
+</div>

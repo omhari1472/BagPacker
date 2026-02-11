@@ -1,0 +1,89 @@
+<div class="booking-form-container">
+  <h2>Book Your Storage</h2>
+  
+  @if (errorMessage()) {
+    <div class="error-alert">
+      {{ errorMessage() }}
+    </div>
+  }
+
+  <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="region">Region/Area *</label>
+      <input
+        type="text"
+        id="region"
+        formControlName="region"
+        placeholder="Enter your region or area"
+        [class.invalid]="region?.invalid && region?.touched"
+      />
+      @if (region?.invalid && region?.touched) {
+        <span class="error-message">Region is required</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="numberOfBags">Number of Bags *</label>
+      <input
+        type="number"
+        id="numberOfBags"
+        formControlName="numberOfBags"
+        min="1"
+        [class.invalid]="numberOfBags?.invalid && numberOfBags?.touched"
+      />
+      @if (numberOfBags?.invalid && numberOfBags?.touched) {
+        <span class="error-message">Please enter a valid number of bags (minimum 1)</span>
+      }
+      <small class="form-hint">₹30 per bag</small>
+    </div>
+
+    <div class="form-group">
+      <label for="dropOffDate">Drop-off Date *</label>
+      <input
+        type="date"
+        id="dropOffDate"
+        formControlName="dropOffDate"
+        [min]="minDropOffDate"
+        (change)="onDropOffDateChange()"
+        [class.invalid]="dropOffDate?.invalid && dropOffDate?.touched"
+      />
+      @if (dropOffDate?.invalid && dropOffDate?.touched) {
+        <span class="error-message">Drop-off date is required</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="pickupDate">Pickup Date *</label>
+      <input
+        type="date"
+        id="pickupDate"
+        formControlName="pickupDate"
+        [min]="minPickupDate"
+        [class.invalid]="pickupDate?.invalid && pickupDate?.touched"
+      />
+      @if (pickupDate?.invalid && pickupDate?.touched) {
+        <span class="error-message">Pickup date is required</span>
+      }
+    </div>
+
+    @if (hasDateError && bookingForm.touched) {
+      <div class="error-alert">
+        {{ dateErrorMessage }}
+      </div>
+    }
+
+    <div class="form-actions">
+      <button 
+        type="submit" 
+        class="btn-primary"
+        [disabled]="isSubmitting() || bookingForm.invalid"
+      >
+        @if (isSubmitting()) {
+          <span>Creating Booking...</span>
+        } @else {
+          <span>Find Storage Locations</span>
+        }
+      </button>
+    </div>
+  </form>
+</div>

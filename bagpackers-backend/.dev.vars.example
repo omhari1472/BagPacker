@@ -1,0 +1,25 @@
+# Copy this file to .dev.vars and fill in your actual values
+# .dev.vars is gitignored and will be used for local development
+
+# Database Configuration
+# Example: mysql://username:password@localhost:3306/bagpackers_db
+DATABASE_URL=mysql://user:password@host:port/database
+
+# JWT Configuration
+# Generate a secure random string for production
+# Example: openssl rand -base64 32
+JWT_SECRET=your-super-secret-jwt-key-change-this
+
+# Razorpay Payment Gateway Configuration
+# Get these from https://dashboard.razorpay.com/app/keys
+RAZORPAY_KEY_ID=rzp_test_your_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+
+# Google OAuth Configuration
+# Get these from https://console.cloud.google.com/apis/credentials
+GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+GOOGLE_REDIRECT_URI=http://localhost:8787/api/auth/google/callback
+
+# Frontend URL for CORS configuration
+FRONTEND_URL=http://localhost:4200

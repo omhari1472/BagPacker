@@ -1,0 +1,522 @@
+.landing-page {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Hero Section with Carousel */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: clamp(500px, 70vw, 700px);
+  overflow: hidden;
+  background: #000;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+}
+
+.carousel-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 2;
+  max-width: 900px;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+  width: 100%;
+}
+
+.carousel-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: bold;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+  line-height: 1.2;
+}
+
+.carousel-description {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  line-height: 1.8;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.hero-actions {
+  display: flex;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: clamp(0.875rem, 2vw, 1rem) clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px; /* Touch-friendly */
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: clamp(0.875rem, 2vw, 1rem) clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px; /* Touch-friendly */
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* Carousel Controls */
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: none;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 2.5vw, 1.5rem);
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  min-width: 44px; /* Touch-friendly */
+  min-height: 44px;
+}
+
+.carousel-control:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.carousel-control:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-control.prev {
+  left: clamp(10px, 2vw, 20px);
+}
+
+.carousel-control.next {
+  right: clamp(10px, 2vw, 20px);
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+  position: absolute;
+  bottom: clamp(20px, 4vw, 30px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: clamp(8px, 1.5vw, 10px);
+  z-index: 3;
+}
+
+.indicator {
+  width: clamp(10px, 2vw, 12px);
+  height: clamp(10px, 2vw, 12px);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 32px; /* Touch-friendly */
+  min-height: 32px;
+  padding: 0;
+}
+
+.indicator.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+/* About Section */
+.about-section {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem);
+  background: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  color: #333;
+  font-weight: bold;
+}
+
+.about-description {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Features Section */
+.features-section {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem);
+  background: #f8f9fa;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.feature-card {
+  background: white;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: clamp(10px, 2vw, 15px);
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.feature-title {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  margin-bottom: 1rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.feature-description {
+  color: #666;
+  line-height: 1.6;
+  font-size: clamp(0.875rem, 1.5vw, 1.05rem);
+}
+
+/* How It Works Section */
+.how-it-works-section {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem);
+  background: white;
+}
+
+.steps-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: clamp(2rem, 4vw, 3rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.step {
+  text-align: center;
+}
+
+.step-number {
+  width: clamp(70px, 12vw, 90px);
+  height: clamp(70px, 12vw, 90px);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: bold;
+  margin: 0 auto clamp(1rem, 2vw, 1.5rem);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.step-title {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  margin-bottom: 1rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.step-description {
+  color: #666;
+  line-height: 1.7;
+  font-size: clamp(0.875rem, 1.5vw, 1.1rem);
+}
+
+/* CTA Section */
+.cta-section {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  text-align: center;
+  color: white;
+}
+
+.cta-section h2 {
+  font-size: clamp(1.75rem, 4vw, 2.8rem);
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.cta-section p {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.6;
+}
+
+.cta-actions {
+  display: flex;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  background: white;
+  color: #667eea;
+  border: none;
+  padding: clamp(0.875rem, 2vw, 1rem) clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px; /* Touch-friendly */
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+.cta-button-outline {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: clamp(0.875rem, 2vw, 1rem) clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px; /* Touch-friendly */
+}
+
+.cta-button-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.cta-button-outline:active {
+  transform: translateY(0);
+}
+
+/* Partner CTA Section */
+.partner-cta-section {
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem);
+  background: #2d3748;
+}
+
+.partner-cta-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 2rem);
+  flex-wrap: wrap;
+}
+
+.partner-cta-text {
+  flex: 1;
+  color: white;
+  min-width: 250px;
+}
+
+.partner-cta-text h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.partner-cta-text p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #cbd5e0;
+}
+
+.partner-cta-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: clamp(0.875rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  min-height: 44px; /* Touch-friendly */
+}
+
+.partner-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.partner-cta-button:active {
+  transform: translateY(0);
+}
+
+/* Tablet optimizations */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .steps-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 767px) {
+  .hero-section {
+    height: 500px;
+  }
+
+  .hero-actions,
+  .cta-actions {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .cta-button,
+  .cta-button-outline {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .carousel-control {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .carousel-control.prev {
+    left: 5px;
+  }
+
+  .carousel-control.next {
+    right: 5px;
+  }
+
+  .features-grid,
+  .steps-container {
+    grid-template-columns: 1fr;
+  }
+
+  .partner-cta-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .partner-cta-button {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .hero-section {
+    height: 450px;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 767px) and (orientation: landscape) {
+  .hero-section {
+    height: 400px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-slide,
+  .feature-card,
+  .btn-primary,
+  .btn-secondary,
+  .cta-button,
+  .cta-button-outline {
+    transition: none;
+  }
+}
